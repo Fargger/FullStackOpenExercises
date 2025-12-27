@@ -1,0 +1,35 @@
+@startuml What happends between the browser and the server when a user clicks the 'submit' button.
+
+skinparam sequenceMessageAlignment center
+
+participant Browser as browser
+participant Server as server 
+database Backend as db
+
+browser -> server : POST note=moremorejump
+
+server -> db : notes.push("moremorejump")
+
+db -> server : new data.json
+
+server -> browser : 302 Found \n Location: /exampleapp/notes
+
+browser -> server : (Redirect)\n GET https://studies.cs.helsinki.fi/exampleapp/notes
+
+server -> browser : HTML Document
+
+browser -> server : GET https://studies.cs.helsinki.fi/exampleapp/main.css
+
+server -> browser : the CSS File
+
+browser -> server : GET https://studies.cs.helsinki.fi/exampleapp/main.js
+
+server -> browser : the JavaScript File
+note right : The browser starts executing JS code\n and fetch the JSON from server.
+
+browser -> server : GET https://studies.cs.helsinki.fi/exampleapp/data.json
+
+server -> browser : [{"content":"moremorejump", "date":"2025-12-26"}, ...]
+note right : The browser executes the call back function\n that renders the notes.
+
+@enduml

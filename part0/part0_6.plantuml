@@ -1,0 +1,12 @@
+@startuml part0_6
+
+skinparam sequenceMessageAlignment center
+
+participant Browser as browser
+participant Server as server
+
+browser -> server : POST /exampleapp/new_note_spa\n {content: "helloworld", date: "2025-12-27T05:25:17.114Z"}
+
+server -> browser : 201 Created
+
+@enduml

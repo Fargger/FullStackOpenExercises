@@ -1,0 +1,24 @@
+@startuml part0_5
+
+skinparam sequenceMessageAlignment center
+
+participant Browser as browser
+participant Server as server
+
+browser -> server : GET https://studies.cs.helsinki.fi/exampleapp/spa
+
+server -> browser : HTML document
+
+browser -> server : GET https://studies.cs.helsinki.fi/exampleapp/main.css
+
+server -> browser : the CSS File
+
+browser -> server : GET https://studies.cs.helsinki.fi/exampleapp/spa.js
+
+server -> browser : the JS File
+
+browser -> server : https://studies.cs.helsinki.fi/exampleapp/data.json
+
+server -> browser : [{"content":"easy", "date":"2025-12-26"}, ...]
+
+@enduml
